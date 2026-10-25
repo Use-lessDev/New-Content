@@ -1,0 +1,25 @@
+{
+  localizedName: Iron Bridge Conduit
+  description: Transports liquids over structures and terrain. Stores a small amount of liquid.
+  type: DirectionLiquidBridge
+  size: 1
+  health: 120
+  hasPower: false
+  liquidCapacity: 60
+  underBullets: true
+  category: liquid
+  requirements:
+  [
+    iron/12
+    amberglass/12
+  ]
+  research:
+  {
+    parent: iron-liquid-splitter
+    requirements:
+    [
+      iron/80
+      amberglass/80
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  localizedName: Iron Liquid Crosser
+  description: Acts as a bridge for two crossing conduits.
+  type: LiquidJunction
+  size: 1
+  health: 90
+  solid: true
+  requirements:
+  [
+    iron/3
+    amberglass/3
+  ]
+  category: liquid
+  research:
+  {
+    parent: iron-conduit
+    requirements:
+    [
+      iron/40
+      amberglass/40
+    ]
+  }
+}
