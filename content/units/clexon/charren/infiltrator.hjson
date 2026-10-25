@@ -1,0 +1,130 @@
+{
+  localizedName: Infiltrator
+  description:
+    '''
+    Fires flaming rounds at nearby enemy targets.
+    [gray]Faction: [orange]Charren
+    '''
+  type: mech
+  speed: 0.6
+  drag: 0.3
+  accel: 0.5
+  flying: false
+  health: 440
+  hitSize: 9
+  range: 60
+  itemCapacity: 45
+  outlineColor: 13111cff
+  mechLegColor: 13111cff
+  rotateSpeed: 4
+  research: {
+    parent: assembly
+    requirements: [
+      tritonium/1700
+      scorchonite/1300
+    ]
+  }
+  immunities: [
+    burning
+  ]
+  weapons:
+  [
+    {
+      name: infiltrator-weapon
+      mirror: false
+      alternate: false
+      x: 0
+      y: 1.75
+      reload: 8
+      shootSound: none
+      top: false
+      rotate: false
+      recoil: 1
+      recoilTime: 45
+      ejectEffect: casing1
+      shootCone: 5
+      shootY: 5
+      inaccuracy: 4
+      shootStatus: newunits-bit-slow
+      shootStatusDuration: 10
+      bullet:
+      {
+        type: RailBulletType
+        collideTerrain: true
+        lifetime: 10
+        collidesTerrain: true
+        damage: 11
+        length: 60
+        pointEffectSpace: 2
+        pierceDamageFactor: 1
+        smokeEffect: none
+        status: burning
+        statusDuration: 60
+        collideTerrain: true
+        pointEffect:
+        {
+          line: true
+          baseRotation: 0
+          rotWithParent: true
+          length: 0.0001
+          lenFrom: 2
+          lenTo: 2
+          strokeFrom: 3
+          strokeTo: 0
+          colorFrom: ffa229ff
+          colorTo: ff772eff
+          cone: 0
+          lifetime: 12
+        }
+        shootEffect:
+        {
+          type: MultiEffect
+          effects:
+          [
+            hitFlameSmall
+            {
+              type: SoundEffect
+              sound: machineGun
+              minVolume: 0.4
+              maxVolume: 0.4
+              effect:
+              {
+                type: ParticleEffect
+                colorFrom: ffa229ff
+                colorTo: ff772eff
+                length: 10
+                lifetime: 15
+                cone: 30
+                line: true
+                lenFrom: 2
+                lenTo: 1
+              }
+            }
+          ]
+        }
+        despawnEffect: none
+        hitEffect: none
+        pierceEffect: none
+        endEffect:
+        {
+          type: MultiEffect
+          effects:
+          [
+            hitFlameSmall
+            {
+              type: ParticleEffect
+              colorFrom: ffa229ff
+              colorTo: ff772eff
+              length: 10
+              lifetime: 15
+              cone: 30
+              line: true
+              lenFrom: 2
+              lenTo: 1
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

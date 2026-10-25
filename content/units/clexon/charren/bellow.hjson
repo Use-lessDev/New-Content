@@ -1,0 +1,132 @@
+{
+  localizedName: Bellow
+  description:
+    '''
+    Fires a medium-range incendiary railgun bolt at enemy targets. Gives itself and allied units shield.
+    [gray]Faction: [orange]Charren
+    '''
+  type: mech
+  health: 2800
+  armor: 9
+  speed: 0.35
+  drag: 0.3
+  accel: 0.5
+  flying: false
+  hitSize: 17
+  range: 200
+  itemCapacity: 50
+  outlineColor: 13111cff
+  mechLegColor: 13111cff
+  rotateSpeed: 2.2
+  mechFrontSway: 0.6
+  mechSideSway: 0.5
+  stepSound: mechStep
+  stepSoundVolume: 0.5
+  immunities:
+  [
+    burning
+    melting
+  ]
+  abilities:
+  [
+    {
+      type: ShieldRegenFieldAbility
+      amount: 50
+      max: 100
+      reload: 180
+      range: 60
+    }
+  ]
+  weapons:
+  [
+    {
+      name: bellow-railgun
+      top: false
+      mirror: true
+      alternate: true
+      x: 11.25
+      y: 0
+      shootX: 0.25
+      shootY: 6
+      reload: 134
+      recoil: 4
+      shake: 3
+      shootCone: 8
+      ejectEffect: casing3
+      shootSound: shootOmura
+      bullet:
+      {
+        type: RailBulletType
+        damage: 470
+        knockback: 13
+        pierceDamageFactor: 0.13
+        incendAmount: 4
+        incendSpread: 12
+        incendChance: 0.8
+        length: 200
+        status: melting
+        statusDuration: 460
+        shootEffect:
+        {
+          type: MultiEffect
+          effects:
+          [
+            {
+              type: ParticleEffect
+              region: newunits-longer-diamond
+              useRotation: true
+              sizeFrom: 4
+              sizeTo: 4
+              widthTo: 0
+              colorFrom: ffa229ff
+              colorTo: ff6130ff
+              length: 0
+              lifetime: 30
+              rotWithParent: true
+            }
+            {
+              type: WaveEffect
+              sizeTo: 19
+              colorFrom: ddddddaa
+              colorTo: dddddda33
+              lightOpacity: 0
+              lifetime: 7
+              rotWithParent: true
+            }
+          ]
+        }
+        smokeEffect: none
+        pointEffectSpacing: 5.5
+        pointEffect:
+        {
+          type: ParticleEffect
+          region: newunits-longest-diamond
+          useRotation: true
+          offset: 90
+          sizeFrom: 2
+          sizeTo: 2
+          lifetime: 23
+          colorFrom: ffa229ff
+          colorTo: ff6130ff
+          length: 0
+          widthTo: 0
+        }
+        pierceEffect: {
+            type: ParticleEffect
+            particles: 4
+            line: true
+            interp: circleOut
+            sizeInterp: circleIn
+            lenFrom: 3
+            lenTo: 1
+            strokeFrom: 1
+            strokeTo: 0.75
+            colorFrom: ffa229ff
+            colorTo: ff6130ff
+            cone: 5
+            length: 10
+        }
+      }
+    }
+  ]
+}

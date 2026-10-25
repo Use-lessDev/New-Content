@@ -1,0 +1,70 @@
+{
+  localizedName: Atom
+  description:
+    '''
+    Fires a continuous stream of plasma at nearby enemy targets.
+    [gray]Faction: [sky]Fusionix
+    '''
+  speed: 1.2
+  accel: 0.04
+  drag: 0.03
+  flying: true
+  health: 700
+  armor: 3
+  range: 55
+  engineOffset: 8
+  hitSize: 12
+  targetAir: false
+  faceTarget: false
+  circleTarget: false
+  lowAltitude: true
+  outlineColor: 13111cff
+  itemCapacity: 0
+  weapons:
+  [
+    {
+      name: atom-torch
+      shootCone: 30
+      mirror: false
+      top: true
+      x: 0
+      y: -2.5
+      shootSound: torch2
+      continuous: true
+      alwaysContinuous: true
+      rotate: true
+      rotateSpeed: 4
+      recoil: 1
+      recoilTime: 30
+      bullet: {
+          type: ContinuousFlameBulletType
+          damage: 7
+          width: 1.5
+          length: 55
+          pierceCap: 2
+          status: burning
+          statusDuration: 370
+          flareWidth: 2
+          flareLength: 10
+          flareColor: a6fbffcc
+          hitEffect: {
+            type: ParticleEffect
+            particles: 3
+            sizeFrom: 2
+            colorFrom: a6fbffcc
+            colorTo: a6fbffcc
+            lifetime: 30
+            interp: circleOut
+            length: 4
+          }
+          colors: [
+            1765bf55
+            47c8ffcc
+            70d8ffdd
+            a6fbffee
+            ffffffff
+          ]
+      }
+    }
+  ]
+}

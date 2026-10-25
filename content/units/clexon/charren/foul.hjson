@@ -1,0 +1,117 @@
+{
+  localizedName: Foul
+  description:
+    '''
+    Fires clusters of superheated iron at enemy targets.
+    [gray]Faction: [orange]Charren
+    '''
+  type: legs
+  groundLayer: 75
+  legCount: 4
+  legLength: 10
+  legContinuousMove: true
+  lockLegBase: true
+  legMoveSpace: 1
+  legForwardScl: 0.7
+  hovering: true
+  shadowElevation: 0.3
+  speed: 0.5
+  drag: 0.3
+  accel: 0.5
+  flying: false
+  health: 560
+  hitSize: 10
+  range: 130
+  itemCapacity: 30
+  outlineColor: 13111cff
+  mechLegColor: 13111cff
+  rotateSpeed: 3
+  stepSound: walkerStepSmall
+  stepSoundVolume: 0.3
+  research: {
+    parent: assembly
+    requirements: [
+      tritonium/2100
+      cobalt/1300
+      scorchonite/2100
+    ]
+  }
+  immunities: [
+    burning
+  ]
+  weapons:
+  [
+    {
+      name: foul-weapon
+      mirror: false
+      alternate: false
+      x: 0
+      y: 2.5
+      reload: 26
+      shootSound: shoot2
+      shootSoundVolume: 0.5
+      top: false
+      rotate: false
+      recoil: 0
+      ejectEffect: casing1
+      shootCone: 5
+      shootY: 0
+      inaccuracy: 10
+      shoot:
+      {
+        shots: 4
+        shotDelay: 0
+      }
+      velocityRnd: 0.1
+      bullet:
+      {
+        type: BasicBulletType
+        collideTerrain: true
+        recoil: 0.15
+        width: 8
+        height: 10
+        shrinkY: 0.1
+        frontColor: ffa229ff
+        backColor: ff7744ff
+        hitEffect:
+        {
+          type: MultiEffect
+          effects:
+          [
+            {
+                type: WaveEffect
+                sizeTo:4
+                lifetime: 10
+                colorFrom: ffa229ff
+                colorTo: ff7744ff
+                strokeTo: 0.5
+            }
+            {
+                type: ParticleEffect
+                particles: 7
+                lifetime: 15
+                line: true
+                lenFrom: 3
+                lenTo: 2
+                strokeFrom: 1
+                strokeTo: 0.5
+                length: 10
+                colorFrom: ffa229ff
+                colorTo: ff7744ff
+            }
+          ]
+        }
+        despawnHit: true
+        despawnEffect: none
+        damage: 14
+        speed: 5
+        lifetime: 26
+        trailColor: ff6130ff
+        trailWidth: 1
+        trailLength: 8
+        status: burning
+        statusDuration: 200
+      }
+    }
+  ]
+}

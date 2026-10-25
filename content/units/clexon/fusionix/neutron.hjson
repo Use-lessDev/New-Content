@@ -1,0 +1,93 @@
+{
+  localizedName: Neutron
+  description:
+    '''
+    Runs towards enemy targets and charges up a self-destruct, causing a large energy explosion.
+    [gray]Faction: [sky]Fusionix
+    '''
+  type: mech
+  speed: 1.8
+  drag: 0.3
+  accel: 0.5
+  flying: false
+  health: 600
+  armor: 1
+  hitSize: 11
+  range: 60
+  itemCapacity: 20
+  outlineColor: 13111cff
+  mechLegColor: 13111cff
+  rotateSpeed: 4
+  controller: SuicideAI
+  weapons:
+  [
+    {
+      name: death-weapon-fusionix
+      mirror: false
+      x: 0
+      y: 0
+      shootY: 0
+      reload: 26
+      recoil: 0
+      top: false
+      shootOnDeath: true
+      shootSound: shotHard
+      shootStatus: slow
+      shootStatusDuration: 40
+      shootWarmupSpeed: 0.2
+      ejectEffect: none
+      shake: 5
+      shootCone: 360
+      parentizeEffects: true
+      bullet:
+      {
+        type: ExplosionBulletType
+        splashDamage: 216
+        splashDamageRadius: 45
+        instantDisappear: false
+        absorbable: false
+        hittable: false
+        status: charged
+        statusDuration: 55
+        despawnEffect:
+        {
+          type: MultiEffect
+          effects:
+          [
+            {
+              type: WaveEffect
+              sizeTo: 40
+              colorFrom: a6fbffff
+              colorTo: a6fbffff
+              lifetime: 30
+              interp: circleOut
+            }
+            {
+                type: ParticleEffect
+                particles: 12
+                sizeFrom: 6
+                sizeTo: 0
+                interp: circleOut
+                sizeInterp: circleIn
+                region: newunits-square
+                length: 46
+                offset: 45
+                colorFrom: a6fbffff
+                colorTo: a6fbffff
+                useRotation: false
+            }
+            {
+                type: SoundEffect
+                sound: shockRifle
+                maxPitch: 1
+                minVolume: 0.5
+                maxVolume: 0.5
+                effect: none
+            }
+          ]
+        }
+        hitEffect: hitLaser
+      }
+    }
+  ]
+}

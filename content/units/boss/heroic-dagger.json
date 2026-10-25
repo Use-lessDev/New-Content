@@ -1,0 +1,75 @@
+{
+  "localizedName": "Heroic Dagger",
+  "research": {
+    "parent": "heroic-reconstructor",
+    "requirements": [
+      "silicon/1500",
+      "titanium/1200"
+    ],
+    "objectives": [
+      "ground-factory"
+    ]
+  },
+  "description": "A model of the Dagger that is faster, more armored, and has stronger guns.",
+  "type": "mech",
+  "armor": 4,
+  "speed": 0.7,
+  "flying": false,
+  "targetAir": true,
+  "health": 890,
+  "hitSize": 8,
+  "outlineColor": "2D2F39FF",
+  "weapons": [
+    {
+      "name": "heroic-weapon",
+      "shootCone": 20,
+      "mirror": true,
+      "alternate": true,
+      "top": false,
+      "rotate": false,
+      "x": 5,
+      "y": 1,
+      "reload": 10,
+      "shootSound": "shootSnap",
+      "recoil": 1,
+      "bullet": {
+        "type": "BasicBulletType",
+        "hitEffect": {
+          "type": "MultiEffect",
+          "effects": [
+            {
+              "type": "WaveEffect",
+              "sizeTo": 8,
+              "strokeFrom": 2.5,
+              "strokeTo": 0.5,
+              "colorFrom": "FFFFFFFF",
+              "colorTo": "FF9494FF",
+              "lifetime": 10
+            },
+            {
+              "type": "ParticleEffect",
+              "line": true,
+              "sizeFrom": 6,
+              "sizeTo": 5,
+              "colorFrom": "FFFFFFFF",
+              "colorTo": "FFB3B3FF",
+              "lifetime": 20,
+              "length": 12
+            }
+          ]
+        },
+        "backColor": "FF9494FF",
+        "damage": 17,
+        "speed": 4,
+        "lifetime": 60,
+        "trailWidth": 1.5,
+        "trailColor": "FF9494FF",
+        "trailLength": 12,
+        "despawnHit": true,
+        "despawnEffect": "none",
+        "width": 7,
+        "height": 9
+      }
+    }
+  ]
+}
