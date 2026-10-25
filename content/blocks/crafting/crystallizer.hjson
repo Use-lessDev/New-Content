@@ -1,0 +1,99 @@
+{
+  name: Crystallizer
+  description: Crystallizes certain chemicals out of Poison to make selevite crystals. More efficient on crystal tiles.
+  type: AttributeCrafter
+  size: 2
+  craftTime: 40
+  health: 800
+  hasPower: true
+  hasLiquids: true
+  hasItems: true
+  liquidCapacity: 80
+  itemCapacity: 20
+  ambientSound: freezerloop
+  ambientSoundVolume: 0.04
+  attribute: crystal
+  baseEfficiency: 0
+  minEfficiency: 0.01
+  maxBoost: 6
+  boostScale: 0.25
+  craftEffect:
+  {
+    type: ParticleEffect
+    particles: 2
+    region: newunits-square
+    offset: 45
+    colorFrom: bd42ffaa
+    colorTo: bd42ffaa
+    interp: linear
+    sizeInterp: slope
+    lifetime: 60
+    sizeFrom: 0
+    sizeTo: 3
+    length: 16
+  }
+  drawer:
+  {
+    type: DrawMulti
+    drawers:
+    [
+      {
+        type: DrawRegion
+        suffix: -bottom
+      }
+      {
+        type: DrawLiquidTile
+        drawLiquid: poison
+        alpha: 1
+      }
+      {
+        type: DrawBubbles
+        color: 9f62d1cc
+        amount: 6
+        spread: 3
+        sides: 4
+        strokeMin: 0
+      }
+      {
+        type: DrawDefault
+      }
+      {
+        type: DrawRegion
+        suffix: -top
+      }
+    ]
+  }
+  outputItem: selevite/1
+  consumes:
+  {
+    power: 1.2
+    liquids:
+    [
+      poison/0.1
+    ]
+  }
+  requirements:
+  [
+    cobalt/50
+    antimony/40
+    amberglass/25
+  ]
+  category: production
+  research:
+  {
+    parent: crusher
+    requirements:
+    [
+      cobalt/1000
+      antimony/800
+      amberglass/400
+    ]
+    objectives:
+    [
+      {
+        type: Produce
+        content: poison
+      }
+    ]
+  }
+}

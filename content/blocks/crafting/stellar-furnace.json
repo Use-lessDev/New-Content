@@ -1,0 +1,89 @@
+{
+  "name": "Stellar Furnace",
+  "description": "Enmelds large amounts of lead, throium and titanium to create stellar alloy. Needs water as a coolant.",
+  "details": "when the",
+  "hideDetails": false,
+  "researchCostMultiplier": 1,
+  "drawer": {
+    "type": "DrawMulti",
+    "drawers": [
+      {
+        "type": "DrawDefault"
+      },
+      {
+        "type": "DrawFlame",
+        "flameColor": "96E8FFFF"
+      }
+    ]
+  },
+  "type": "GenericCrafter",
+  "size": 3,
+  "hasPower": true,
+  "hasItems": true,
+  "hasLiquids": true,
+  "itemCapacity": 10,
+  "liquidCapacity": 30,
+  "craftTime": 328,
+  "craftEffect": {
+    "type": "MultiEffect",
+    "effects": [
+      {
+        "type": "ParticleEffect",
+        "particles": 16,
+        "sizeFrom": 4,
+        "interp": "circleOut",
+        "colorFrom": "96E8FFFF",
+        "colorTo": "21A1FFFF",
+        "length": 21,
+        "lifetime": 180
+      },
+      {
+        "type": "ParticleEffect",
+        "particles": 1,
+        "sizeFrom": 12,
+        "sizeTo": 12,
+        "region": "newunits-stellar-furnace-stellarglow",
+        "interp": "linear",
+        "colorFrom": "96E8FFFF",
+        "colorTo": "3283FF00",
+        "length": 0,
+        "baseLength": 0,
+        "lifetime": 80
+      }
+    ]
+  },
+  "updateEffect": "none",
+  "ambientSound": "flux",
+  "ambientSoundVolume": 0.6,
+  "consumes": {
+    "power": 6.7,
+    "items": {
+      "items": [
+        "lead/6",
+        "titanium/5",
+        "thorium/3"
+      ]
+    },
+    "liquids": [
+      "water/0.3"
+    ]
+  },
+  "requirements": [
+    "surge-alloy/320",
+    "silicon/790",
+    "plastanium/15",
+    "titanium/160",
+    "metaglass/540"
+  ],
+  "category": "crafting",
+  "research": {
+    "parent": "surge-smelter",
+    "objectives": [
+      {
+        "type": "OnPlanet",
+        "planet": "serpulo"
+      }
+    ]
+  },
+  "outputItem": "stellar-alloy/2"
+}

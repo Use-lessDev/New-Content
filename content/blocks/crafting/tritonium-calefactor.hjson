@@ -1,0 +1,92 @@
+{
+  name: Tritonium Calefactor
+  description: Forges slag and iron into tritonium.
+  type: GenericCrafter
+  size: 3
+  craftTime: 45
+  health: 760
+  hasPower: true
+  hasLiquids: true
+  hasItems: true
+  liquidCapacity: 15
+  itemCapacity: 20
+  ambientSound: furnace
+  ambientSoundVolume: 0.04
+  craftEffect:
+  {
+      type: ParticleEffect
+      particles: 4
+      region: newunits-square
+      offset: 45
+      colorFrom: add0dbff
+      colorTo: add0dbff
+      lifetime: 20
+      sizeFrom: 4
+      sizeTo: 0
+      length: 16
+  }
+  drawer: {
+    type: DrawMulti
+    drawers:
+    [
+      {
+        type: DrawRegion
+        suffix: -bottom
+      }
+      {
+        type: DrawLiquidTile
+        drawLiquid: slag
+        alpha: 1
+      }
+      {
+        type: DrawBubbles
+        color: ffbd94ff
+        amount: 8
+        spread: 4
+      }
+      {
+        type: DrawDefault
+      }
+      {
+        type: DrawGlowRegion
+        suffix: -glow
+        color: eaa270aa
+      }
+    ]
+  }
+  outputItem: tritonium/3
+  consumes:
+  {
+    power: 2.1
+    items: [
+      iron/2
+    ]
+    liquids:
+    [
+      slag/0.1
+    ]
+  }
+  requirements:
+  [
+    iron/40
+    antimony/22
+    light-alloy/25
+    amberglass/20
+  ]
+  category: crafting
+  research: {
+    parent: small-alloy-forge
+    requirements: [
+      iron/250
+      antimony/100
+      light-alloy/120
+      amberglass/75
+    ]
+    objectives: [
+      {
+        type: SectorComplete
+        preset: scorchedSkalelands
+      }
+    ]
+  }
+}
