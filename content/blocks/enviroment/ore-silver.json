@@ -1,0 +1,8 @@
+{
+  "name": "Silver Ore",
+  "type": "OreBlock",
+  "oreDefault": true,
+  "oreScale": 31.44,
+  "oreThreshold": 0.87,
+  "itemDrop": "silver"
+}

@@ -1,0 +1,8 @@
+type: Floor
+name: Selevic Stone
+variants: 4
+mapColor: 310094ff
+wall: selevic-stone-wall
+attributes: {
+  crystal: 1
+}
