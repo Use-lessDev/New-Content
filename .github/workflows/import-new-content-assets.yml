@@ -1,0 +1,72 @@
+name: Import original sprites and audio
+
+on:
+  push:
+    paths:
+      - ".github/workflows/import-new-content-assets.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the Java mod repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+
+      - name: Download and add the original non-text resources
+        env:
+          SOURCE_COMMIT: d28b2eae13dca98a9a3064aa1129b4be267d91b6
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          archive="/tmp/new-content-original.tar.gz"
+          source_dir="/tmp/new-content-original"
+          curl --fail --location --retry 3 \
+            "https://github.com/Chaoticans-modding-team/New-Content/archive/${SOURCE_COMMIT}.tar.gz" \
+            --output "$archive"
+          mkdir -p "$source_dir"
+          tar -xzf "$archive" -C "$source_dir" --strip-components=1
+
+          for dir in sprites sprites-override sounds music; do
+            if [[ -d "$source_dir/$dir" ]]; then
+              rm -rf "./$dir"
+              cp -a "$source_dir/$dir" .
+            else
+              echo "Missing upstream directory: $dir" >&2
+              exit 1
+            fi
+          done
+
+          if [[ -f "$source_dir/drill-item-4.png" ]]; then
+            cp "$source_dir/drill-item-4.png" ./drill-item-4.png
+          fi
+
+          echo "Resource file counts:"
+          for dir in sprites sprites-override sounds music; do
+            printf '%s: ' "$dir"
+            find "$dir" -type f | wc -l
+          done
+          test -d sprites
+          test -d sprites-override
+          test -d sounds
+          test -d music
+
+      - name: Commit imported resources
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sprites sprites-override sounds music drill-item-4.png
+          if git diff --cached --quiet; then
+            echo "The resource directories are already up to date."
+            exit 0
+          fi
+          git commit -m "Stage 3/3: Import original sprites and audio"
+          git push origin HEAD:main
