@@ -1,0 +1,29 @@
+{
+  localizedName: Tube
+  description: Transports items forward. Does not require power.
+  type: Duct
+  speed: 5
+  size: 1
+  health: 120
+  armored: false
+  requirements:
+  [
+    iron/1
+  ]
+  bridgeReplacement: tube-bridge
+  junctionReplacement: tube-junction
+  research:
+  {
+    parent: core-central
+    requirements:
+    [
+      iron/15
+    ]
+    objectives: [
+      {
+        type: OnSector
+        preset: poisonBayCaves
+      }
+    ]
+  }
+}
