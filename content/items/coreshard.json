@@ -1,0 +1,8 @@
+{
+  "name": "[yellow]Shard of electricity"
+  "description": "A Shard made out of pure energy. Used to make powerful units and upgraded core units."
+    "cost": 20,
+    "hardness": 25,
+    "color": "FFEE6BFF",
+  "charge": 4.5,
+}
