@@ -5,9 +5,11 @@ Java conversion of the **New Content** Mindustry mod.
 **Original authors:** Rylid Umil & Aegires  
 **Sprites:** Aegires
 
-## Structure
+## Project layout
 
-```
+The mod's data-driven definitions remain HJSON/JSON files in `content/`; art and other resources are kept beside them in the top-level resource directories. The Java entry point only handles runtime changes that need code.
+
+```text
 .
 ├── icon.png
 ├── mod.hjson
@@ -15,7 +17,7 @@ Java conversion of the **New Content** Mindustry mod.
 ├── README.md
 ├── build.sh
 ├── src/newcontent/NewContentMod.java
-├── content/          # blocks, units, items, liquids, planets, sectors, status...
+├── content/
 ├── sprites/
 ├── sprites-override/
 ├── maps/
@@ -24,22 +26,20 @@ Java conversion of the **New Content** Mindustry mod.
 └── music/
 ```
 
-## Java changes
+## Java behavior
 
-Port of the original mod's Java-side behavior:
+- Adds the extra research-tree branches after all content is initialized.
+- Renames the first crawler weapon to `newunits-death-weapon`.
+- Sets the first Mace and Oxynoe weapon light radius to zero.
 
-- Tech-tree nodes for iron, scorchonite, selevite, poison liquids, etc.
-- Crawler weapon name change to `newunits-death-weapon`
-- Light-radius fix on Mace and Oxynoe
+The mod name in `mod.hjson` and `NewContentMod.MOD_NAME` must stay in sync.
 
 ## Build
 
-Requires JDK 17+ and a Mindustry JAR (v154+).
+Requires a JDK 17+ and a Mindustry v154+ JAR. Run from the project folder:
 
 ```bash
 MINDUSTRY_JAR=/path/to/Mindustry.jar ./build.sh
 ```
 
-The script produces `New-Content-Java.jar`.
-
-**Note:** Keep the complete `content/`, `sprites/`, `sprites-override/`, `maps/`, `schematics/`, `sounds/`, and `music/` directories alongside the Java source when building the mod.
+This creates `New-Content-Java.jar`. The script packages any available resource folders, and warns when `content/` or `sprites/` is missing so an incomplete archive is not mistaken for a full build.
