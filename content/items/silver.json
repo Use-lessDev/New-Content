@@ -1,0 +1,12 @@
+{
+  "name": "Silver",
+  "description": "Used in middle grade tech as a reinforcement structure or as piercing ammunition.",
+  "details": "sviler",
+  "hideDetails": false,
+    "cost": 4,
+    "hardness": 3,
+    "color": "E3E3E3FF",
+    "research": {
+    "parent": "titanium"
+  }
+}

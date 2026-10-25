@@ -1,0 +1,12 @@
+{
+  name: Selevite
+  description: Used in material production and as shrapnel.
+  details: An anomalous crystal. If cooled and heated in the right ways, it can grow extremely fast.
+  cost: 2
+  hardness: 3
+  explosiveness: 0.3
+  color: 7700ffff
+  research: {
+    parent: poison
+  }
+}
