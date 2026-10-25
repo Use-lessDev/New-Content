@@ -1,0 +1,49 @@
+{
+    "localizedName": "Barrage",
+    "description": "Fires a barrage of standard bullets at all nearby enemies.",
+	"details": "Risso Clickbait.",
+    "research": {
+	    "parent": "risso",
+	    "requirements": [
+		    "silicon/250",
+		    "lead/100"
+		    ]
+		    }
+    "type": "naval",
+    "speed": 1.1,
+    "drag": 0.13,
+    "armor": 3.5,
+	"targetAir": true,
+    "hitSize": 9.5,
+    "health": 255,
+    "accel": 0.4,
+    "rotateSpeed": 3.3,
+    "trailLength": 20,
+    "rotateShooting": false,
+	"weapons": [
+		{
+    "name": "tiny-minigun",
+    "reload": 10,
+	"mirror": false,
+    "x": 0,
+    "y": -3,
+    "shootY": 4,
+    "recoil": 1.5,
+	"recoilTime": 100,
+	"inaccuracy": 5,
+    "rotate": true,
+    "shootSound": "shootSnap",
+    "rotateSpeed": 4.2,
+    "shootCone": 2,
+	"ejectEffect": "casing1",
+	"bullet": {
+		"damage": 18,
+		"speed": 3,
+	"width": 5,
+	"height": 6,
+		"shrinkX": 0.1,
+	}
+		}
+	
+	]
+}
