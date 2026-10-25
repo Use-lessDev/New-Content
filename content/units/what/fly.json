@@ -1,0 +1,41 @@
+{
+        "localizedName": "Fly",
+	"description": "the worst thing you ever see",
+        "speed": 10,
+        "accel": 0.9,
+        "drag": 0.9,
+        "flying": true,
+        "health": 25,
+        "armor": 0,
+        "engineOffset": 3.5,
+		"engineSize": 0.5,
+		"targetAir": true,
+        "circleTarget": false,
+	    "weapons": [
+		    {
+    "name": "flying-segments",
+    "type": "PointDefenseWeapon",
+			    "reload": 10
+	"shootCone": 15,
+    "mirror": true,
+	"alternate": true,
+    "top": true,
+	"targetInterval": 0,
+    "targetSwitchInterval": 0,
+	"rotate": true,
+	"controllable": false,
+	"autoTarget": true,
+	"rotateSpeed": 12.5,
+    "x": 3,
+    "y": 1,
+    "reload": 2,
+    "shootSound": "laserpew",
+    "recoil": 2.5,
+    "bullet": {
+		"damage": 30,
+		"speed": 999,
+		"maxRange": 35,
+	}
+		}
+	]
+}
