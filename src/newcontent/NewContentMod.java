@@ -4,6 +4,7 @@ import arc.Events;
 import mindustry.Vars;
 import mindustry.content.*;
 import mindustry.ctype.UnlockableContent;
+import mindustry.game.EventType.ClientLoadEvent;
 import mindustry.game.EventType.ContentInitEvent;
 import mindustry.mod.Mod;
 import mindustry.type.Item;
@@ -29,6 +30,8 @@ public class NewContentMod extends Mod {
         // ContentInitEvent runs after base and mod content are initialized.
         // Unlike ClientLoadEvent, it is not tied to the client UI lifecycle.
         Events.on(ContentInitEvent.class, event -> applyRuntimeChanges());
+        // Sprite regions are safe to reload once the client atlas/UI has loaded.
+        Events.on(ClientLoadEvent.class, event -> loadCrawlerWeaponRegion());
     }
 
     private void applyRuntimeChanges() {
@@ -54,8 +57,8 @@ public class NewContentMod extends Mod {
         // Keep these vanilla-unit changes on both client and headless loads.
         UnitType crawler = UnitTypes.crawler;
         if (crawler != null && crawler.weapons.size > 0) {
+            // Set the name before the engine's content-loading pass uses it.
             crawler.weapons.get(0).name = MOD_NAME + "-death-weapon";
-            crawler.weapons.get(0).load();
         }
 
         if (UnitTypes.mace != null && UnitTypes.mace.weapons.size > 0) {
@@ -63,6 +66,13 @@ public class NewContentMod extends Mod {
         }
         if (UnitTypes.oxynoe != null && UnitTypes.oxynoe.weapons.size > 0) {
             UnitTypes.oxynoe.weapons.get(0).bullet.lightRadius = 0f;
+        }
+    }
+
+    private void loadCrawlerWeaponRegion() {
+        UnitType crawler = UnitTypes.crawler;
+        if (crawler != null && crawler.weapons.size > 0) {
+            crawler.weapons.get(0).load();
         }
     }
 
