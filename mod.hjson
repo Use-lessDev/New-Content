@@ -77,7 +77,7 @@
             // Core
             "core-central", "core-mecca", "core-burg",
             // Turret
-            "mecha", "amp" "meteor", "hive", "concussor", "soak", "splinter"
+            "mecha", "amp", "meteor", "hive", "concussor", "soak", "splinter"
             // Unit
             "assembly", "primary-reconstructor-module",
         // Item
