@@ -1,0 +1,99 @@
+{
+  localizedName: Soak
+  description: Fires fluid at enemies. Durability is insufficient for holding potent acids or extremely hot liquids.
+  type: LiquidTurret
+  size: 2
+  health: 1360
+  outlineColor: 13111cff
+  shootCone: 30
+  liquidCapacity: 10
+  reload: 4
+  range: 90
+  targetAir: true
+  targetGround: true
+  rotateSpeed: 3
+  shootY: 8
+  recoil: 0.2
+  velocityRnd: 0.1
+  ammoPerShot: 4
+  inaccuracy: 13
+  shoot: {
+      shots: 2
+      shotDelay: 1
+  }
+  ammoTypes:
+  {
+    water: {
+        type: LiquidBulletType
+        liquid: water
+        knockback: 1
+        layer: 98 //Prevent Bloom
+        speed: 3
+        lifetime: 30
+        orbSize: 3
+        status: wet
+        statusDuration: 120
+    }
+    cryofluid: {
+        type: LiquidBulletType
+        liquid: cryofluid
+        knockback: 1.1
+        speed: 3
+        lifetime: 30
+        orbSize: 3
+        status: freezing
+        statusDuration: 120
+    }
+    slag: {
+        type: LiquidBulletType
+        liquid: slag
+        damage: 6
+        knockback: 1.2
+        speed: 3
+        lifetime: 30
+        orbSize: 3
+        status: melting
+        statusDuration: 120
+    }
+    poison-water: {
+        damage: 3
+        type: LiquidBulletType
+        liquid: poison-water
+        knockback: 1
+        layer: 98
+        speed: 3
+        lifetime: 30
+        orbSize: 3
+        status: newunits-lightly-poisoned
+        statusDuration: 120
+    }
+  }
+  drawer:
+  {
+    type: DrawTurret
+    basePrefix: clexon-
+  }
+  requirements:
+  [
+    iron/60
+    light-alloy/20
+    selevite/40
+  ]
+  category: turret
+  research:
+  {
+    parent: meteor
+    requirements:
+    [
+      iron/600
+      light-alloy/300
+      selevite/450
+    ]
+    objectives: [
+        {
+            type: OnSector
+            preset: lowlands
+        }
+    ]
+  }
+}

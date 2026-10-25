@@ -1,0 +1,27 @@
+{
+  "type": "UnitFactory",
+  "name": "Fire Factory",
+  "description": "Produces flame-based units.",
+  "consumes": {
+    "power": 2
+  },
+  "size": 3,
+  "health": 495,
+  "plans": [
+    {
+      "unit": "flame",
+      "time": 840,
+      "requirements": [
+        "silicon/15",
+        "coal/15"
+      ]
+    }
+  ],
+  "requirements": [
+    "copper/120",
+    "silicon/80",
+    "emberium/40"
+  ],
+  "category": "units",
+  "research": "ground-factory"
+}

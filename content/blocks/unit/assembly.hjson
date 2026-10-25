@@ -1,0 +1,82 @@
+{
+  type: UnitFactory
+  name: Assembly
+  description: Produces tier 1 units. Outputted units can be used directly or moved into reconstructor modules for upgrading.
+  consumes:
+  {
+    power: 1.67
+  }
+  size: 2
+  health: 670
+  regionSuffix: -clexon
+  plans:
+  [
+    {
+      unit: soldier
+      time: 1200
+      requirements:
+      [
+        tritonium/30
+        cobalt/30
+      ]
+    }
+    {
+      unit: infiltrator
+      time: 1000
+      requirements:
+      [
+        tritonium/25
+        scorchonite/20
+      ]
+    }
+    {
+      unit: foul
+      time: 1360
+      requirements:
+      [
+        tritonium/30
+        cobalt/20
+        scorchonite/30
+      ]
+    }
+    {
+      unit: neutron
+      time: 900
+      requirements:
+      [
+        tritonium/35
+        antimony/20
+      ]
+    }
+    {
+      unit: ion
+      time: 900
+      requirements:
+      [
+        tritonium/20
+        cobalt/25
+      ]
+    }
+  ]
+  requirements:
+  [
+    iron/160
+    cobalt/70
+    tritonium/90
+  ]
+  category: units
+  research: {
+    parent: core-central
+    requirements: [
+        iron/200
+        cobalt/100
+        tritonium/130
+    ]
+    objectives: [
+      {
+        type: OnSector
+        preset: magmaticCaverns
+      }
+    ]
+  }
+}

@@ -1,0 +1,198 @@
+{
+  localizedName: Splinter
+  description: Launches volatile crystallizing Selevite shards at nearby enemy targets.
+  type: ItemTurret
+  size: 3
+  health: 1900
+  outlineColor: 13111cff
+  maxAmmo: 25
+  ammoPerShot: 5
+  reload: 100
+  range: 205
+  targetAir: true
+  targetGround: true
+  rotateSpeed: 1.5
+  shootSound: shatter
+  shake: 4
+  shootY: -1
+  recoil: 1
+  recoilTime: 120
+  inaccuracy: 3
+  consumes:
+  {
+    liquids:
+    [
+      poison/0.24
+    ]
+  }
+  ammoTypes:
+  {
+    selevite:
+    {
+      type: BasicBulletType
+      frontColor: bd42ffff
+      backColor: 8000ffff
+      speed: 8
+      lifetime: 15
+      width: 8
+      height: 16
+      damage: 35
+      ammoMultiplier: 1
+      sprite: newunits-crystal-bullet
+      trailColor: bd42ffff
+      trailChance: 0.1
+      hitEffect:
+      {
+        type: MultiEffect
+        effects:
+        [
+          {
+            type: ParticleEffect
+            particles: 8
+            lifetime: 20
+            line: true
+            lenFrom: 3
+            lenTo: 1
+            strokeFrom: 2
+            strokeTo: 0
+            length: 20
+            colorFrom: bd42ffff
+            colorTo: bd42ffff
+          }
+          {
+            type: WaveEffect
+            lifetime: 20
+            sizeTo: 18
+            colorFrom: bd42ffff
+            colorTo: bd42ffff
+          }
+        ]
+      }
+      despawnHit: true
+      despawnEffect: none
+      hitSound: explosion
+      fragBullets: 4
+      fragLifeMin: 1.5
+      fragLifeMax: 3
+      fragVelocityMin: 0.8
+      fragVelocityMax: 1
+      fragRandomSpread: 40
+      splashDamage: 62
+      splashDamageRadius: 22
+      status: newunits-crystallizing
+      statusDuration: 300
+      fragBullet:
+      {
+        type: BasicBulletType
+        frontColor: bd42ffff
+        backColor: 8000ffff
+        speed: 10
+        lifetime: 8
+        width: 3
+        height: 5
+        shrinkY: 1
+        damage: 9
+        sprite: newunits-crystal-bullet
+        bulletInterval: 2
+        hitEffect: none
+        despawnEffect: none
+        intervalRandomSpread: 10
+        pierceCap: -1
+        pierce: true
+        pierceBuilding: true
+        weaveMag: 5
+        weaveScl: 0.2
+        trailWidth: 0.5
+        trailColor: bd42ffff
+        status: newunits-crystallizing
+        statusDuration: 150
+        intervalBullet:
+        {
+          type: MultiBulletType
+          damage: 40
+          hitSize: 0
+          knockback: 1.5
+          status: newunits-crystallizing
+          statusDuration: 60
+          pierce: true
+          bullets:
+          [
+            {
+              type: ExplosionBulletType
+              despawnEffect:
+              {
+                type: ParticleEffect
+                cone: 30
+                particles: 8
+                lifetime: 20
+                line: true
+                lenFrom: 3
+                lenTo: 1
+                strokeFrom: 2
+                strokeTo: 0
+                length: 20
+                colorFrom: bd42ffff
+                colorTo: bd42ffff
+                useRotation: true
+              }
+              hitEffect: none
+              despawnHit: false
+              despawnSound: shatter
+              killShooter: false
+            }
+            {
+              type: ShrapnelBulletType
+              length: 16
+              serrations: 0
+              fromColor: bd42ffff
+              toColor: 8000ffff
+              lifetime: 20
+              damage: 40
+              knockback: 1.5
+              impact: true
+              wdith: 20
+              status: newunits-crystallizing
+              statusDuration: 60
+              hitEffect:
+              {
+                type: ParticleEffect
+                particles: 8
+                lifetime: 20
+                line: true
+                lenFrom: 3
+                lenTo: 1
+                strokeFrom: 2
+                strokeTo: 0
+                length: 20
+                colorFrom: bd42ffff
+                colorTo: bd42ffff
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+  drawer:
+  {
+    type: DrawTurret
+    basePrefix: clexon-
+  }
+  requirements:
+  [
+    iron/280
+    selevite/400
+    tritonium/200
+  ]
+  category: turret
+  research:
+  {
+    parent: concussor
+    objectives: [
+        {
+            type: OnSector
+            preset: lowlands
+        }
+    ]
+  }
+}

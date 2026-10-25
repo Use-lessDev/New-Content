@@ -1,0 +1,44 @@
+{
+  "upgrades": [
+    [
+      "fortress",
+      "scepter"
+    ],
+    [
+      "quasar",
+      "vela"
+    ],
+    [
+      "raider",
+      "commander"
+    ],
+    [
+      "spiroct",
+      "arkyid"
+    ],
+    [
+      "zenith",
+      "antumbra"
+    ],
+    [
+      "mega",
+      "quad"
+    ],
+    [
+      "whirlybird",
+      "cheyenne"
+    ],
+    [
+      "bryde",
+      "sei"
+    ],
+    [
+      "cyerce",
+      "aegires"
+    ],
+    [
+      "falter",
+      "delusion"
+    ]
+  ]
+}
