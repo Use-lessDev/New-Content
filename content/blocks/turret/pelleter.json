@@ -1,0 +1,85 @@
+{
+  "localizedName": "Pelleter",
+  "description": "Fires clusters bullets at nearby enemies over extremely long distances.",
+  "hideDetails": false,
+  "type": "ItemTurret",
+  "researchCostMultiplier": 0.7,
+  "size": 1,
+  "health": 240,
+  "maxAmmo": 25,
+  "ammoPerShot": 1,
+  "reload": 50,
+  "range": 160,
+  "targetAir": true,
+  "targetGround": true,
+  "rotateSpeed": 4,
+  "recoil": 2,
+  "shoot": {
+    "shots": 3,
+    "shotDelay": 6
+  },
+  "ammoTypes": {
+    "copper": {
+      "type": "BasicBulletType",
+      "shootEffect": "casing1",
+      "damage": 9,
+      "ammoMultiplier": 2,
+      "lifetime": 40,
+      "speed": 4,
+      "hitEffect": "hitBulletColor",
+      "despawnEffect": "hitBulletColor",
+      "frontColor": "eac1a8ff",
+      "backColor": "d39169ff"
+    },
+    "graphite": {
+      "type": "BasicBulletType",
+      "shootEffect": "casing2",
+      "damage": 22,
+      "ammoMultiplier": 2,
+      "lifetime": 40,
+      "speed": 4,
+      "reloadMultiplier": 0.5,
+      "hitEffect": "hitBulletColor",
+      "despawnEffect": "hitBulletColor",
+      "frontColor": "7d89d8ff",
+      "backColor": "dae1eeff"
+    },
+    "silicon": {
+      "type": "BasicBulletType",
+      "shootEffect": "casing1",
+      "damage": 9,
+      "ammoMultiplier": 2,
+      "lifetime": 40,
+      "speed": 4,
+      "reloadMultiplier": 1.25,
+      "hitEffect": "hitBulletColor",
+      "despawnEffect": "hitBulletColor",
+      "frontColor": "707594ff",
+      "backColor": "999ba0ff"
+    },
+    "silver": {
+      "type": "BasicBulletType",
+      "shootEffect": "casing1",
+      "damage": 15,
+      "ammoMultiplier": 3,
+      "lifetime": 40,
+      "speed": 4,
+      "hitEffect": "hitBulletColor",
+      "despawnEffect": "hitBulletColor",
+      "frontColor": "ffffffff",
+      "backColor": "aaaaccff",
+      "pierce": true,
+      "pierceBuilding": true,
+      "pierceCap": 3
+    }
+  },
+  "requirements": [
+    "lead/55",
+    "copper/35",
+    "graphite/15"
+  ],
+  "category": "turret",
+  "research": {
+    "parent": "duo"
+  }
+}
