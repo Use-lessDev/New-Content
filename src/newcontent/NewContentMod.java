@@ -4,29 +4,34 @@ import arc.Events;
 import mindustry.Vars;
 import mindustry.content.*;
 import mindustry.ctype.UnlockableContent;
-import mindustry.game.EventType.ClientLoadEvent;
+import mindustry.game.EventType.ContentInitEvent;
 import mindustry.mod.Mod;
 import mindustry.type.Item;
 import mindustry.type.Liquid;
 import mindustry.type.Planet;
 import mindustry.type.UnitType;
-import mindustry.content.TechTree;
 import mindustry.content.TechTree.TechNode;
 
 /**
- * New Content - Java port of the original content + JS mod.
- * Original authors: Rylid Umil & Aegires
+ * New Content - Java port of the original mod's runtime changes.
+ *
+ * The HJSON content remains data-driven under /content. This class handles
+ * the changes that require Java after all base and mod content is initialized.
+ * Original authors: Rylid Umil & Aegires.
  */
 public class NewContentMod extends Mod {
 
+    /** Must match the "name" field in mod.hjson. */
     public static final String MOD_NAME = "newunits";
 
     @Override
     public void init() {
-        Events.on(ClientLoadEvent.class, e -> onClientLoad());
+        // ContentInitEvent runs after base and mod content are initialized.
+        // Unlike ClientLoadEvent, it is not tied to the client UI lifecycle.
+        Events.on(ContentInitEvent.class, event -> applyRuntimeChanges());
     }
 
-    private void onClientLoad() {
+    private void applyRuntimeChanges() {
         Planet clexon = Vars.content.planet(MOD_NAME + "-clexon");
 
         Item iron = Vars.content.item(MOD_NAME + "-iron");
@@ -35,7 +40,7 @@ public class NewContentMod extends Mod {
         Liquid poisonWater = Vars.content.liquid(MOD_NAME + "-poison-water");
         Liquid poison = Vars.content.liquid(MOD_NAME + "-poison");
 
-        // Tech tree nodes (ported from original main.js)
+        // Preserve the extra research-tree branches from the original script.
         addNode(Liquids.water, iron, 0, null);
         addNode(Liquids.cryofluid, Liquids.water, -1, clexon);
         addNode(Liquids.slag, iron, 0, null);
@@ -46,40 +51,44 @@ public class NewContentMod extends Mod {
         addNode(Items.scrap, iron, 0, null);
         addNode(Items.sand, Items.scrap, -1, clexon);
 
-        // Weapon name change for crawler
+        // Keep these vanilla-unit changes on both client and headless loads.
         UnitType crawler = UnitTypes.crawler;
         if (crawler != null && crawler.weapons.size > 0) {
             crawler.weapons.get(0).name = MOD_NAME + "-death-weapon";
             crawler.weapons.get(0).load();
         }
 
-        // Vanilla patches (light radius fixes)
         if (UnitTypes.mace != null && UnitTypes.mace.weapons.size > 0) {
-            UnitTypes.mace.weapons.get(0).bullet.lightRadius = 0;
+            UnitTypes.mace.weapons.get(0).bullet.lightRadius = 0f;
         }
         if (UnitTypes.oxynoe != null && UnitTypes.oxynoe.weapons.size > 0) {
-            UnitTypes.oxynoe.weapons.get(0).bullet.lightRadius = 0;
+            UnitTypes.oxynoe.weapons.get(0).bullet.lightRadius = 0f;
         }
     }
 
-    private void addNode(UnlockableContent contentChild, UnlockableContent contentParent, int index, Planet planet) {
-        if (contentChild == null || contentParent == null) return;
-        if (contentParent.techNodes == null || contentParent.techNodes.isEmpty()) return;
+    private void addNode(UnlockableContent child, UnlockableContent parent, int index, Planet planet) {
+        if (child == null || parent == null) return;
+        if (parent.techNodes == null || parent.techNodes.isEmpty()) return;
 
-        if (index < 0) {
-            index = contentParent.techNodes.size + index;
+        int resolvedIndex = index;
+        if (resolvedIndex < 0) {
+            resolvedIndex = parent.techNodes.size + resolvedIndex;
         }
-        if (index < 0 || index >= contentParent.techNodes.size) index = 0;
+        if (resolvedIndex < 0 || resolvedIndex >= parent.techNodes.size) {
+            resolvedIndex = 0;
+        }
 
-        TechNode parentNode = contentParent.techNodes.get(index);
-        parentNode.children.add(TechTree.nodeProduce(contentChild, () -> {}));
+        TechNode parentNode = parent.techNodes.get(resolvedIndex);
+        if (parentNode == null) return;
+
+        parentNode.children.add(TechTree.nodeProduce(child, () -> {}));
 
         if (planet == null) {
-            contentChild.shownPlanets.addAll(contentParent.shownPlanets);
-            contentChild.databaseTabs.addAll(contentParent.databaseTabs);
+            child.shownPlanets.addAll(parent.shownPlanets);
+            child.databaseTabs.addAll(parent.databaseTabs);
         } else {
-            contentChild.shownPlanets.add(planet);
-            contentChild.databaseTabs.add(planet);
+            child.shownPlanets.add(planet);
+            child.databaseTabs.add(planet);
         }
     }
 }
