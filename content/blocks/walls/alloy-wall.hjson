@@ -1,0 +1,20 @@
+{
+  localizedName: Alloy Wall
+  description: Protects structures from enemy projectiles. Armored
+  type: Wall
+  size: 1
+  health: 520
+  armor: 5
+  buildCostMultiplier: 4
+  requirements:
+  [
+    light-alloy/6
+  ]
+  category: defense
+  research: {
+      parent: iron-wall
+      requirements: [
+        light-alloy/200
+      ]
+  }
+}

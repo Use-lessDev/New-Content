@@ -1,0 +1,19 @@
+{
+  localizedName: Iron Wall
+  description: Protects structures from enemy projectiles.
+  type: Wall
+  size: 1
+  health: 400
+  buildCostMultiplier: 4
+  requirements:
+  [
+    iron/6
+  ]
+  category: defense
+  research: {
+      parent: core-central
+      requirements: [
+        iron/200
+      ]
+  }
+}
