@@ -1,0 +1,127 @@
+{
+  localizedName: Repulsion
+  description:
+    '''
+    Fires volleys of energy shells at nearby enemy targets. Can hover over bodies of liquid.
+    [gray]Faction: [sky]Fusionix
+    '''
+  type: hover
+  speed: 1.3
+  accel: 0.05
+  drag: 0.02
+  hovering: true
+  flying: false
+  canDrown: false
+  rotateSpeed: 3
+  omniMovement: false
+  health: 700
+  armor: 3
+  hitSize: 11
+  engineOffset: 5.5
+  engineSize: 2.5
+  itemCapacity: 0
+  useEngineElevation: false
+  moveSound: fieldloop
+  moveSoundVolume: 0.2
+  outlineColor: 13111cff
+  trailLength: 10
+  range: 90
+  shadowElevation: 0.2
+  parts:
+  [
+    {
+      type: HoverPart
+      x: 4.5
+      y: -5
+      mirror: true
+      radius: 5
+      phase: 90
+      stroke: 2
+      minStroke: 0
+      layerOffset: -0.001
+      sides: 5
+      color: a6fbffff
+    }
+    {
+      type: HoverPart
+      x: 4
+      y: 4
+      mirror: true
+      radius: 6
+      phase: 90
+      stroke: 2
+      minStroke: 0
+      layerOffset: -0.001
+      sides: 5
+      color: a6fbffff
+    }
+  ]
+  weapons:
+  [
+    {
+      name: repulsion-blaster
+      x: 3.5
+      y: -2.25
+      mirror: true
+      alternate: true
+      reload: 50
+      shootSound: shootSalvo
+      ejectEffect: none
+      inaccuracy: 13
+      lifeRnd: 0.2
+      extraLife: 0.1
+      velocityRnd: 0.2
+      extraVelocity: 0.1
+      rotate: true
+      rotateSpeed: 5
+      shoot:
+      {
+        shots: 4
+      }
+      bullet:
+      {
+        type: BasicBulletType
+        damage: 12
+        frontColor: ffffffff
+        backColor: a6fbffff
+        width: 6
+        height: 10
+        speed: 4
+        lifetime: 18
+        trailColor: a6fbffff
+        trailWidth: 0.8
+        trailLength: 4
+        despawnEffect: none
+        knockback: 2
+        status: shocked
+        despawnHit: true
+        hitEffect:
+        {
+          type: MultiEffect
+          effects:
+          [
+            {
+              type: ParticleEffect
+              particles: 5
+              length: 4
+              lifetime: 20
+              colorFrom: a6fbffff
+              colorTo: a6fbffff
+              sizeFrom: 3
+              region: newunits-square
+              offset: 45
+              useRotation: false
+            }
+            {
+                type: WaveEffect
+                colorFrom: a6fbffff
+                colorTo: a6fbffff
+                sizeTo: 5
+                lifetime: 10
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

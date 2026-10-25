@@ -1,0 +1,98 @@
+{
+  localizedName: Soldier
+  description: Fires weighted bullets at enemies.
+  type: mech
+  targetBuildingsMobile: false
+  speed: 0.6
+  drag: 0.3
+  accel: 0.5
+  flying: false
+  health: 600
+  hitSize: 13
+  armor: 2.5
+  range: 150
+  itemCapacity: 10
+  outlineColor: 13111cff
+  mechLegColor: 13111cff
+  rotateSpeed: 2.5
+  research: {
+    parent: assembly
+    requirements: [
+      tritonium/2100
+      cobalt/2100
+    ]
+  }
+  weapons:
+  [
+    {
+      name: soldier-gun
+      mirror: true
+      alternate: true
+      x: 6.25
+      y: 1.5
+      reload: 32
+      shootSound: parry
+      top: false
+      rotate: false
+      recoil: 2
+      recoilTime: 36
+      ejectEffect: casing2
+      shootCone: 10
+      bullet:
+      {
+        type: BasicBulletType
+        frontColor: fff8e8ff
+        backColor: f9c27aff
+        width: 8
+        height: 15
+        speed: 6
+        lifetime: 25
+        knockback: 5
+        damage: 33
+        despawnEffect: none
+        despawnHit: true
+        collideTerrain: true
+        hitEffect: {
+            type: MultiEffect
+            effects: [
+                {
+                    type: WaveEffect
+                    colorFrom: fff8e8ff
+                    colorTo: f9c27aff
+                    lifetime: 8
+                    sizeTo: 6.5
+                    strokeFrom: 1
+                    strokeTo: 0.5
+                }
+                {
+                    type: ParticleEffect
+                    particles: 2
+                    colorFrom: fff8e8ff
+                    colorTo: f9c27aff
+                    lifetime: 14
+                    lenFrom: 3
+                    lenTo: 1
+                    strokeFrom: 1
+                    strokeTo: 0.5
+                    line: true
+                }
+                {
+                    type: ParticleEffect
+                    particles: 5
+                    cone: 20
+                    useRotation: true
+                    colorFrom: fff8e8ff
+                    colorTo: f9c27aff
+                    lifetime: 14
+                    lenFrom: 3
+                    lenTo: 1
+                    strokeFrom: 1
+                    strokeTo: 0.5
+                    line: true
+                }
+            ]
+        }
+      }
+    }
+  ]
+}
