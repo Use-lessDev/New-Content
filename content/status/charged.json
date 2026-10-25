@@ -1,0 +1,23 @@
+{
+  "name": "Charged",
+  "speedMultiplier": 0.9,
+  "color": "FFF582FF",
+  "effectChance": 0.8,
+  "affinities": [
+    "shocked",
+    "electrified",
+    "wet"
+  ],
+  "transitionDamage": 50,
+  "effect": {
+    "type": "ParticleEffect",
+    "particles": 1,
+    "sizeFrom": 1,
+    "sizeTo": 0,
+    "lifetime": 20,
+    "colorFrom": "FFF582FF",
+    "colorTo": "FFF582FF",
+    "line": true,
+    "length": 4,
+  }
+}
