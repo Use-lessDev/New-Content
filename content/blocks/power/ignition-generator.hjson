@@ -1,0 +1,127 @@
+{
+  name: Ignition Generator
+  description: Generates power by igniting flammable materials. Will explode if fueled with an explosive item for long enough.
+  type: ConsumeGenerator
+  size: 2
+  health: 360
+  hasItems: true
+  itemCapacity: 10
+  ambientSound: combustion
+  ambientSoundVolume: 0.02
+  powerProduction: 3.6
+  itemDuration: 22
+  generateEffectRange: 0
+  effectChance: 0.03
+  generateEffect:
+  {
+    type: MultiEffect
+    effects:
+    [
+      {
+        type: ParticleEffect
+        particles: 3
+        sizeFrom: 2
+        sizeTo: 5
+        colorFrom: 806c5444
+        colorTo: 806c5400
+        lifetime: 300
+        interp: linear
+        sizeInterp: linear
+        length: 18
+        cone: 3
+        offsetX: 5
+        offsetY: 0
+        baseRotation: 45
+      }
+      {
+        type: ParticleEffect
+        particles: 3
+        sizeFrom: 2
+        sizeTo: 5
+        colorFrom: 806c5444
+        colorTo: 806c5400
+        lifetime: 300
+        interp: linear
+        sizeInterp: linear
+        length: 18
+        cone: 3
+        offsetX: 0
+        offsetY: 5
+        baseRotation: 45
+      }
+      {
+        type: ParticleEffect
+        particles: 3
+        sizeFrom: 2
+        sizeTo: 5
+        colorFrom: 806c5444
+        colorTo: 806c5400
+        lifetime: 300
+        interp: linear
+        sizeInterp: linear
+        length: 18
+        cone: 3
+        offsetX: -5
+        offsetY: 0
+        baseRotation: 45
+      }
+      {
+        type: ParticleEffect
+        particles: 3
+        sizeFrom: 2
+        sizeTo: 5
+        colorFrom: 806c5444
+        colorTo: 806c5400
+        lifetime: 300
+        interp: linear
+        sizeInterp: linear
+        length: 18
+        cone: 3
+        offsetX: 0
+        offsetY: -5
+        baseRotation: 45
+      }
+    ]
+  }
+  drawer:
+  {
+    type: DrawMulti
+    drawers:
+    [
+      {
+        type: DrawDefault
+      }
+      {
+        type: DrawGlowRegion
+        suffix: -glow
+        color: ff0000aa
+      }
+    ]
+  }
+  consumes:
+  {
+    itemFlammable: {}
+    itemExplode: {}
+  }
+  category: power
+  requirements: [
+    iron/80
+    cobalt/40
+    light-alloy/20
+  ]
+  research:
+  {
+    parent: heat-harvester
+    requirements: [
+        iron/600
+        cobalt/450
+        light-alloy/300
+    ]
+    objectives: [
+      {
+        type: OnSector
+        preset: scorchedSkalelands
+      }
+    ]
+  }
+}

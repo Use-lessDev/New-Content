@@ -1,0 +1,43 @@
+{
+  localizedName: Heat Harvester
+  description: Generates power from hot tiles. Hotter tiles produce more power.
+  type: ThermalGenerator
+  size: 2
+  health: 320
+  powerProduction: 1.4
+  floating: true
+  generateEffect: {
+      type: ParticleEffect
+      particles: 3
+      region: newunits-square
+      offset: 45
+      colorFrom: f2957eee
+      colorTo: f2957e00
+      sizeFrom: 3
+      sizeTo: 0
+      length: 9
+  }
+  effectChance: 0.04
+  attribute: heat
+  category: power
+  requirements:
+  [
+    iron/10
+    cobalt/15
+  ]
+  research:
+  {
+    parent: iron-power-node
+    requirements:
+    [
+      iron/25
+      cobalt/35
+    ]
+    objectives: [
+      {
+        type: OnSector
+        preset: poisonBayCaves
+      }
+    ]
+  }
+}

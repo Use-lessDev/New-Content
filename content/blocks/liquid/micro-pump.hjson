@@ -1,0 +1,27 @@
+{
+    name: Micro Pump
+    description: Pumps and outputs liquids.
+    type: Pump
+    size: 1
+    pumpAmount: 0.05
+    liquidCapacity: 10
+    health: 160
+    requirements: [
+      iron/15
+      amberglass/15
+    ]
+    category: liquid
+    research: {
+        parent: iron-drill
+        requirements: [
+            iron/20
+            amberglass/20
+        ]
+        objectives: [
+            {
+                type: SectorComplete
+                preset: toxicEstuary
+            }
+        ]
+    }
+}

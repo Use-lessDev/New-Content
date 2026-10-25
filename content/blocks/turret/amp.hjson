@@ -1,0 +1,89 @@
+{
+  localizedName: Amp
+  description: Fires slowing bolts at enemy targets.
+  type: PowerTurret
+  size: 1
+  health: 600
+  outlineColor: 13111cff
+  reload: 13
+  range: 120
+  targetAir: true
+  targetGround: true
+  rotateSpeed: 4
+  shootSound: lasershoot2
+  coolantMultiplier: 5
+  inaccuracy: 2
+  shootY: 1.5
+  shootCone: 25
+  shoot:
+  {
+    type: ShootAlternate
+    barrels: 2
+    spread: 3
+  }
+  consumes:
+  {
+    power: 5
+    coolant:
+    {
+      amount: 0.15
+    }
+  }
+  shootType:
+  {
+    type: LaserBoltBulletType
+    frontColor: ffffffff
+    backColor: ccccffdd
+    lifetime: 30
+    speed: 4
+    damage: 12
+    hitEffect: {
+        type: WaveEffect
+        lifetime: 10
+        sizeTo: 4
+        strokeTo: 0.5
+        colorFrom: ffffffff
+        colorTo: ffffffaa
+    }
+    smokeEffect: {
+        type: WaveEffect
+        lifetime: 10
+        sizeTo: 4
+        strokeTo: 0.5
+        colorFrom: ffffffff
+        colorTo: ffffffaa
+    }
+    despawnEffect: none
+    despawnHit: true
+    status: newunits-bit-slow
+    statusDuration: 20
+    collideTerrain: true
+  }
+  shootEffect: none
+  drawer:
+  {
+    type: DrawTurret
+    basePrefix: clexon-
+  }
+  requirements:
+  [
+    iron/45
+    antimony/20
+  ]
+  category: turret
+  research:
+  {
+    parent: mecha
+    requirements:
+    [
+      iron/100
+      antimony/50
+    ]
+    objectives: [
+      {
+        type: OnSector
+        preset: toxicEstuary
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  localizedName: Core: Central
+  description: Core of the base. Lightly armored. Once it falls, the sector falls too.
+  type: CoreBlock
+  itemCapacity: 2600
+  size: 2
+  health: 1200
+  armor: 5
+  category: effect
+  unitType: diversionist
+  unitCapModifier: 2
+  thrusterLength: 8
+  alwaysUnlocked: true
+  requirements: [
+    iron/900
+  ]
+  research:
+  {
+    planet: clexon
+    root: true
+    requiresUnlock: false
+    name: Clexon
+  }
+}
