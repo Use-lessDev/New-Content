@@ -7,15 +7,17 @@ Java conversion of the **New Content** Mindustry mod.
 
 ## Project layout
 
-The mod's data-driven definitions remain HJSON/JSON files in `content/`; art and other resources are kept beside them in the top-level resource directories. The Java entry point only handles runtime changes that need code.
+The mod's HJSON/JSON definitions are in `content/`; original art, maps, schematics and audio are kept in their corresponding top-level folders. Java handles runtime changes that need code.
 
 ```text
 .
-├── icon.png
+├── .github/workflows/import-new-content-assets.yml
 ├── mod.hjson
 ├── LICENSE
 ├── README.md
+├── SECURITY.md
 ├── build.sh
+├── drill-item-4.png
 ├── src/newcontent/NewContentMod.java
 ├── content/
 ├── sprites/
@@ -28,7 +30,7 @@ The mod's data-driven definitions remain HJSON/JSON files in `content/`; art and
 
 ## Java behavior
 
-- Adds the extra research-tree branches after all content is initialized.
+- Adds extra research-tree branches after content initialization.
 - Renames the first crawler weapon to `newunits-death-weapon`.
 - Sets the first Mace and Oxynoe weapon light radius to zero.
 
@@ -42,4 +44,4 @@ Requires a JDK 17+ and a Mindustry v154+ JAR. Run from the project folder:
 MINDUSTRY_JAR=/path/to/Mindustry.jar ./build.sh
 ```
 
-This creates `New-Content-Java.jar`. The script packages any available resource folders, and warns when `content/` or `sprites/` is missing so an incomplete archive is not mistaken for a full build.
+This creates `New-Content-Java.jar`. The build script packages `content/`, `sprites/`, `sprites-override/`, `maps/`, `schematics/`, `sounds/` and `music/`. It warns if key content or sprite folders are missing.
