@@ -17,7 +17,7 @@
   version: 8x3x0-java
   minGameVersion: 154
   main: "newcontent.NewContentMod"
-  repo: "Use-lessDev/New-Content"
+  repo: "rylid-umil/New-Content"
   contentOrder:
   [
     // Serpulo
