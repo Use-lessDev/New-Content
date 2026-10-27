@@ -19,6 +19,7 @@ import mindustry.content.TechTree.TechNode;
  * The HJSON content remains data-driven under /content. This class handles
  * the changes that require Java after all base and mod content is initialized.
  * Original authors: Rylid Umil & Aegires.
+ * Ported by Use-lessDev.
  */
 public class NewContentMod extends Mod {
 
