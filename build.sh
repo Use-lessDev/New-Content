@@ -42,7 +42,7 @@ echo "==> Packaging mod..."
 rm -f "$OUT"
 jar --create --file "$OUT" -C "$CLASS_DIR" .
 
-for file in mod.hjson icon.png LICENSE README.md; do
+for file in mod.hjson icon.png drill-item-4.png LICENSE README.md; do
   if [[ -f "$file" ]]; then
     jar --update --file "$OUT" "$file"
   fi
